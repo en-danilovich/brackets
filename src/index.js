@@ -8,12 +8,12 @@ module.exports = function check(str, bracketsConfig) {
       continue;
     }
 
-    if (bracketsConfig[bracketIndex] === bracketsConfig[bracketIndex + 1] && stack.slice(-1)[0] === bracketIndex + 1) {
+    if (bracketsConfig[bracketIndex] === bracketsConfig[bracketIndex + 1] && stack.slice(-1)[0] === bracketIndex) {
       bracketIndex++;
     }
     if (bracketIndex % 2 === 0) {
-      stack.push(bracketIndex + 1);
-    } else if (stack.pop() !== bracketIndex) {
+      stack.push(bracketIndex);
+    } else if (stack.pop() + 1 !== bracketIndex) {
       return false;
     }
   }
